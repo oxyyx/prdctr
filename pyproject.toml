@@ -1,0 +1,26 @@
+[tool.poetry]
+name = "prdctr"
+version = "0.1.0"
+description = "Exploring the realms of product information management"
+authors = ["Oxyyx <oxyyx@protonmail.com"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+fastapi = "^0.73.0"
+uvicorn = "^0.17.0"
+alembic = "^1.7.5"
+psycopg2 = "^2.9.3"
+pydantic = { extras = ["dotenv"], version = "^1.9.0" }
+
+[tool.poetry.dev-dependencies]
+pytest = "^6.2.5"
+flake8 = "^4.0.1"
+
+[tool.poetry.scripts]
+start = "app.main:start"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
