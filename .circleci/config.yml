@@ -14,8 +14,18 @@ jobs:
       - run:
           name: Run tests
           command: poetry run pytest --version
-
+  publish-latest: 
+      steps: 
+        - checkout
+        - setup_remote_docker
+        - run: 
+            name: Publish Docker Image to Docker Hub
+            command: |
+              echo "$DOCKERHUB_ACCESS_KEY" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
+              docker build -t $IMAGE_NAME .
+              docker push $IMAGE_NAME:latest
 workflows:
   main:
     jobs:
       - build-and-test
+      - publish-latest
