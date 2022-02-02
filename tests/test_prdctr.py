@@ -1,5 +1,12 @@
-from app import __version__
+from fastapi.testclient import TestClient
 
+from app.main import app
 
-def test_version():
-    assert __version__ == '0.1.0'
+client = TestClient(app)
+
+def test_read_main():
+    """
+    We expect the root directory to not return anything.
+    """
+    response = client.get("/")
+    assert response.status_code == 404
