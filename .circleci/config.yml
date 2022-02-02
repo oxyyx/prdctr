@@ -28,8 +28,11 @@ jobs:
               docker build -t oxyyx/prdctr:$TAG .
               docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_ACCESS_KEY
               docker push oxyyx/prdctr:$TAG
+              docker push oxyyx/prdctr:latest
 workflows:
   main:
     jobs:
       - build-and-test
-      - publish-latest
+      - publish-latest:
+          requires:
+              - build-and-test
