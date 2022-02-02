@@ -20,7 +20,7 @@ jobs:
           command: mkdir test-report
       - run:
           name: Run tests
-          command: poetry run pytest --version --junit-xml=test-report/report.xml
+          command: poetry run pytest --junit-xml=test-report/report.xml
       - store_test_results:
           path: test-report
   publish-latest: 
