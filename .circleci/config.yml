@@ -5,8 +5,12 @@ orbs:
 
 jobs:
   build-and-test:
+    resource_class: medium
     docker:
       - image: cimg/python:3.10.2
+        auth: 
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_ACCESS_KEY
     steps:
       - checkout
       - python/install-packages:
@@ -15,6 +19,7 @@ jobs:
           name: Run tests
           command: poetry run pytest --version
   publish-latest: 
+      resource_class: medium
       docker:
       - image: cimg/python:3.10.2
       steps: 
