@@ -11,6 +11,7 @@ dist/
 
 # Testing
 .pytest_cache/
+test-report/
 
 # Environments
 .env

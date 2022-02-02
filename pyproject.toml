@@ -13,10 +13,12 @@ uvicorn = "^0.17.0"
 alembic = "^1.7.5"
 psycopg2 = "^2.9.3"
 pydantic = { extras = ["dotenv"], version = "^1.9.0" }
+requests = "^2.27.1"
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.2.5"
 flake8 = "^4.0.1"
+black = {version = "^22.1.0", allow-prereleases = true}
 
 [tool.poetry.scripts]
 start = "app.main:start"
