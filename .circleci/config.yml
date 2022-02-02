@@ -19,6 +19,9 @@ jobs:
           name: Create test-report directory
           command: mkdir test-report
       - run:
+          name: Copy the .env.example to .env for the test run
+          command: cp .env.example .env
+      - run:
           name: Run tests
           command: poetry run pytest --junit-xml=test-report/report.xml
       - store_test_results:
