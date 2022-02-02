@@ -5,7 +5,7 @@ orbs:
 
 jobs:
   build-and-test:
-    resource_class: medium
+    resource_class: small
     docker:
       - image: cimg/python:3.10.2
         auth: 
@@ -16,10 +16,15 @@ jobs:
       - python/install-packages:
           pkg-manager: poetry
       - run:
+          name: Create test-report directory
+          command: mkdir test-report
+      - run:
           name: Run tests
-          command: poetry run pytest --version
+          command: poetry run pytest --version --junit-xml=test-report/report.xml
+      - store_test_results:
+          path: test-report
   publish-latest: 
-      resource_class: medium
+      resource_class: small
       docker:
       - image: cimg/python:3.10.2
       steps: 
